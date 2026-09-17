@@ -1,0 +1,15 @@
+{
+  "name": "MathsMaster Secondary",
+  "short_name": "MathsMaster",
+  "description": "Queensland curriculum mathematics practice for Years 7 to 12.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f8f9ff",
+  "theme_color": "#6c5ce7",
+  "icons": [
+    {"src":"./assets/secondary-icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"./assets/secondary-icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}

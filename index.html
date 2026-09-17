@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#6c5ce7">
+<meta name="description" content="Queensland curriculum mathematics practice for secondary students.">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./assets/secondary-apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./assets/secondary-icon-192.png">
+<title>MathsMaster Secondary - Queensland Curriculum</title>
+<link rel="stylesheet" href="./css/styles.css">
+
+</head>
+<body>
+
+<div id="celebration">⭐</div>
+
+<!-- SNAKE GAME SCREEN (fullscreen overlay) -->
+<div id="snake-screen" style="display:none">
+  <div class="snake-header">
+    <div class="snake-title">🐍 SNAKE REWARD!</div>
+    <div class="snake-subtitle">You scored 90%+ — enjoy your game! 🎉</div>
+  </div>
+  <div class="snake-stats">
+    <div class="snake-stat"><div class="snake-stat-val" id="snake-score">0</div><div class="snake-stat-lbl">SCORE</div></div>
+    <div class="snake-stat"><div class="snake-stat-val" id="snake-length">1</div><div class="snake-stat-lbl">LENGTH</div></div>
+    <div class="snake-stat"><div class="snake-stat-val" id="snake-high">0</div><div class="snake-stat-lbl">BEST</div></div>
+  </div>
+  <div style="position:relative;display:inline-block">
+    <canvas id="snake-canvas" width="360" height="360"></canvas>
+    <div id="snake-overlay">
+      <div class="snake-overlay-title">🐍 Ready?</div>
+      <div class="snake-overlay-sub">Use arrow keys, WASD, or the d-pad below.<br>You get one round — make it count! 🏆</div>
+      <button class="snake-overlay-btn" onclick="snakeStart()">▶ Start Game</button>
+    </div>
+  </div>
+  <div class="snake-controls">
+    <div class="snake-dpad">
+      <div></div>
+      <button class="snake-dpad-btn" ontouchstart="snakeDir(0,-1)" onclick="snakeDir(0,-1)">▲</button>
+      <div></div>
+      <button class="snake-dpad-btn" ontouchstart="snakeDir(-1,0)" onclick="snakeDir(-1,0)">◀</button>
+      <div class="snake-dpad-center"></div>
+      <button class="snake-dpad-btn" ontouchstart="snakeDir(1,0)" onclick="snakeDir(1,0)">▶</button>
+      <div></div>
+      <button class="snake-dpad-btn" ontouchstart="snakeDir(0,1)" onclick="snakeDir(0,1)">▼</button>
+      <div></div>
+    </div>
+    <div class="snake-hint">Arrow keys / WASD also work on keyboard</div>
+  </div>
+</div>
+
+<div id="nav">
+  <button id="nav-logo" onclick="goHome()">🎓 MathsMaster Secondary</button>
+  <span class="nav-crumb" id="nc1" style="display:none">›</span>
+  <span class="nav-crumb-label" id="nc2" style="display:none" onclick="goStrand()"></span>
+  <span class="nav-crumb" id="nc3" style="display:none">›</span>
+  <span class="nav-crumb-label" id="nc4" style="display:none"></span>
+  <div class="nav-spacer"></div>
+<div id="year-select-wrap"><span id="year-badge-label">AC v9.0 · QLD 2026 ·</span><select id="year-level-select" onchange="changeSecondaryYear(this.value)"><option value="Year 7" selected>Year 7</option><option value="Year 8">Year 8</option><option value="Year 9">Year 9</option><option value="Year 10">Year 10</option><option value="Year 11">Year 11</option><option value="Year 12">Year 12</option></select></div>
+</div>
+
+<div id="app"></div>
+
+<script src="./js/app.js" defer></script>
+
+</body>
+</html>
