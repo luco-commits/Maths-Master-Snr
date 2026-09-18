@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mathsmaster-secondary-v1';
+const CACHE_NAME = 'maths-master-snr-v2';
 const APP_ASSETS = ['./','./index.html','./css/styles.css','./js/app.js','./manifest.json','./assets/secondary-icon-192.png','./assets/secondary-icon-512.png','./assets/secondary-apple-touch-icon.png'];
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_ASSETS)).then(() => self.skipWaiting())));
 self.addEventListener('activate', event => event.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)))).then(() => self.clients.claim())));

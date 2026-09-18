@@ -507,54 +507,22 @@ function showDashboard(){
   }).join('');
   render(`
     <div id="hero">
-      <span class="hero-icon">🎓</span>
-      <h1>MathsMaster ${CURRENT_YEAR}</h1>
-      <p class="sub">Queensland Curriculum · Australian Curriculum v9.0</p>
-      <p class="sub2">Every question uses fresh random numbers — unlimited practice!</p>
+      <span class="hero-kicker">QUEENSLAND MATHEMATICS</span>
+      <h1>Maths Master Snr <span>${CURRENT_YEAR}</span></h1>
+      <p class="sub">Focused practice aligned to Queensland curriculum pathways</p>
+      <p class="sub2">Build fluency, review methods and prepare for assessment.</p>
     </div>
-
-    <!-- TIMES TABLES FEATURE CARD -->
-    <button onclick="showTimesTablesHub()" style="
-      width:100%;background:linear-gradient(135deg,#4c1d95,#7c3aed,#a78bfa,#7c3aed);
-      background-size:200% 200%;animation:rainbowBg 4s ease infinite;
-      border:none;border-radius:24px;padding:28px 28px;margin-bottom:20px;
-      cursor:pointer;text-align:left;font-family:inherit;
-      box-shadow:0 8px 40px #7c3aed44;
-      display:flex;align-items:center;gap:20px;flex-wrap:wrap;
-      transition:transform .25s cubic-bezier(.34,1.56,.64,1);"
-      onmouseenter="this.style.transform='translateY(-4px) scale(1.01)'"
-      onmouseleave="this.style.transform='none'">
-      <span style="font-size:52px;flex-shrink:0">✖️</span>
-      <div style="flex:1;min-width:160px">
-        <div style="font-weight:900;font-size:24px;color:white;margin-bottom:4px;letter-spacing:-.3px">Times Tables Trainer</div>
-        <div style="font-size:14px;color:rgba(255,255,255,.8);font-weight:700;margin-bottom:10px">Timed tests · Choose your tables · Win Snake! 🐍</div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap">
-          <span style="background:rgba(255,255,255,.2);color:white;border-radius:8px;padding:4px 12px;font-size:12px;font-weight:800">⏱ 5 min test</span>
-          <span style="background:rgba(255,255,255,.2);color:white;border-radius:8px;padding:4px 12px;font-size:12px;font-weight:800">🎯 Pick your tables</span>
-          <span style="background:rgba(255,255,255,.2);color:white;border-radius:8px;padding:4px 12px;font-size:12px;font-weight:800">🐍 90% = Snake reward!</span>
-        </div>
-      </div>
-      <span style="font-size:28px;color:rgba(255,255,255,.6)">→</span>
-    </button>
-
-    <h2 style="font-weight:900;font-size:19px;color:#1a1a2e;margin-bottom:14px;padding-left:2px">📚 Curriculum Topics</h2>
+    ${buildSeniorCommandBar()}
+    <h2 class="section-heading">Course content</h2>
     <div class="strand-grid">${cards}</div>
     <div class="how-box">
-      <h3>✨ How it works</h3>
+      <h3>Study workflow</h3>
       <div class="how-grid">
-        <div><div class="how-item-title">🎯 Choose a strand</div><div class="how-item-desc">Pick your current topic area</div></div>
-        <div><div class="how-item-title">✏️ Work it out</div><div class="how-item-desc">Draw on the canvas, use the scratchpad, then type your answer</div></div>
-        <div><div class="how-item-title">✅ Check Answer</div><div class="how-item-desc">The site checks your typed answer instantly — up to 3 tries!</div></div>
-        <div><div class="how-item-title">🧩 Show Working</div><div class="how-item-desc">Reveal step-by-step guidance if you get stuck</div></div>
+        <div><div class="how-item-title">Select a course area</div><div class="how-item-desc">Choose the concept you need to strengthen</div></div>
+        <div><div class="how-item-title">Develop your solution</div><div class="how-item-desc">Use the workspace and record clear mathematical working</div></div>
+        <div><div class="how-item-title">Check your response</div><div class="how-item-desc">Receive immediate feedback in Study mode</div></div>
+        <div><div class="how-item-title">Review the method</div><div class="how-item-desc">Compare your approach with a structured solution</div></div>
       </div>
-    </div>
-    <div style='display:none'>
-      <span class="parent-btn-icon">&#128274;</span>
-      <div class="parent-btn-text">
-        <div class="parent-btn-title">Parent Settings</div>
-        <div class="parent-btn-sub">Bonus minutes, PIN protection &amp; reward configuration</div>
-      </div>
-      <span style="font-size:20px;color:rgba(255,255,255,.5)">&#8250;</span>
     </div>`);
 }
 
@@ -596,6 +564,7 @@ function showTopic(ssK,tK){
 }
 
 function renderQuestion(){
+  MAX_ATTEMPTS=SNR_MODE==='exam'?1:3;
   CUR_Q=SEL_TOPIC.gen();
   STEPS_SHOWN=0; WORKING_SHOWN=false; MARKED=null; ATTEMPTS=0;
   const {color,accent,bg}=SEL_STRAND;
@@ -624,7 +593,7 @@ function renderQuestion(){
 
     <div style="margin-bottom:10px">
       <span class="meta-badge" style="background:${bg};border-color:${color}44;color:${accent}">${SEL_TOPIC.acCode} · Queensland ${CURRENT_YEAR}</span>
-      <span class="meta-badge" style="background:#f8f8f8;border-color:#eee;color:#aaa">⭐⭐⭐ A-Level</span>
+      <span class="meta-badge" style="background:#f8f8f8;border-color:#eee;color:#aaa">⭐⭐⭐ Core practice</span>
     </div>
 
     <!-- QUESTION -->
@@ -650,7 +619,7 @@ function renderQuestion(){
       <button class="btn btn-outline" id="btn-working"
         style="border-color:${color};color:${accent}"
         onmouseenter="this.style.background='${bg}'" onmouseleave="this.style.background='white'"
-        onclick="revealWorking()">🧩 Show Working</button>
+        onclick="revealWorking()">Review the method</button>
       <button class="btn btn-gray" onclick="renderQuestion()">🔄 New Question</button>
     </div>
 
@@ -2010,8 +1979,8 @@ function changeYearLevel(year){
   try{localStorage.setItem('mmSelectedYear',year);}catch(e){}
   ACTIVE_CURRICULUM=YEAR_CURRICULA[year]||CURRICULUM;
   var logo=document.getElementById('nav-logo');
-  if(logo)logo.innerHTML='🎓 MathsMaster '+year;
-  document.title='MathsMaster '+year+' — Queensland Curriculum';
+  if(logo)logo.innerHTML='🎓 Maths Master Snr '+year;
+  document.title='Maths Master Snr '+year+' — Queensland Curriculum';
   var sel=document.getElementById('year-level-select');
   if(sel&&sel.value!==year)sel.value=year;
   if(VIEW==='dashboard'||VIEW==='strand'||VIEW==='tt-hub')showDashboard();
@@ -2029,8 +1998,8 @@ function changeYearLevel(year){
       var sel=document.getElementById('year-level-select');
       if(sel)sel.value=saved;
       var logo=document.getElementById('nav-logo');
-      if(logo)logo.innerHTML='🎓 MathsMaster '+saved;
-      document.title='MathsMaster '+saved+' — Queensland Curriculum';
+      if(logo)logo.innerHTML='🎓 Maths Master Snr '+saved;
+      document.title='Maths Master Snr '+saved+' — Queensland Curriculum';
     }
   }catch(e){}
 })();
@@ -2040,6 +2009,38 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
 }
 
+
+
+// MATHS MASTER SNR V2 EXPERIENCE
+let SNR_MODE=localStorage.getItem('snrMode')||'study';
+function buildSeniorCommandBar(){
+  const completed=parseInt(localStorage.getItem('snrCompleted')||'0');
+  const best=parseInt(localStorage.getItem('snrBest')||'0');
+  return `<section class="command-centre">
+    <div class="command-top"><div><div class="eyebrow">LEARNING MODE</div><h2>Set your session focus</h2></div>
+    <div class="mode-switch" role="group" aria-label="Learning mode">
+      <button class="mode-option ${SNR_MODE==='study'?'active':''}" onclick="setSnrMode('study')">Study</button>
+      <button class="mode-option ${SNR_MODE==='exam'?'active':''}" onclick="setSnrMode('exam')">Exam</button>
+    </div></div>
+    <div class="command-grid">
+      <button class="command-card" onclick="startNextRecommended()"><span class="command-icon">→</span><span><strong>Continue practice</strong><small>Open a recommended topic for ${CURRENT_YEAR}</small></span></button>
+      <button class="command-card" onclick="showFormulaReference()"><span class="command-icon">ƒ</span><span><strong>Formula reference</strong><small>Review essential rules and notation</small></span></button>
+      <div class="command-stat"><strong>${completed}</strong><small>Sessions completed</small></div>
+      <div class="command-stat"><strong>${best}%</strong><small>Best result</small></div>
+    </div>
+    <p class="mode-description">${SNR_MODE==='exam'?'Exam mode provides one attempt per question and keeps worked solutions hidden until the response is submitted.':'Study mode provides up to three attempts and step by step support.'}</p>
+  </section>`;
+}
+function setSnrMode(mode){SNR_MODE=mode;localStorage.setItem('snrMode',mode);MAX_ATTEMPTS=mode==='exam'?1:3;showDashboard();}
+function startNextRecommended(){const first=Object.keys(ACTIVE_CURRICULUM)[0];showStrand(first);}
+function showFormulaReference(){
+ const content=CURRENT_YEAR==='Year 7'||CURRENT_YEAR==='Year 8'||CURRENT_YEAR==='Year 9'||CURRENT_YEAR==='Year 10'
+ ?['Index laws: aᵐ × aⁿ = aᵐ⁺ⁿ','Gradient: m = (y₂ − y₁)/(x₂ − x₁)','Pythagoras: c² = a² + b²','Circle: C = 2πr and A = πr²','Probability: P(A) = favourable outcomes / total outcomes']
+ :['Compound interest: A = P(1 + r)ⁿ','Arithmetic sequence: tₙ = a + (n − 1)d','Binomial mean: E(X) = np','Differentiation: d/dx(xⁿ) = nxⁿ⁻¹','Trigonometry: sin²θ + cos²θ = 1'];
+ const ov=document.createElement('div');ov.className='modal-overlay';ov.id='formula-modal';ov.innerHTML=`<div class="modal-card formula-card"><div class="eyebrow">REFERENCE</div><h2>Essential formulas</h2><p>${CURRENT_YEAR} quick reference</p><div class="formula-list">${content.map(x=>`<div>${x}</div>`).join('')}</div><button class="modal-btn modal-btn-primary" onclick="document.getElementById('formula-modal').remove()">Close reference</button></div>`;document.body.appendChild(ov);
+}
+const _snrShowSessionEnd=showSessionEnd;
+showSessionEnd=function(){const result=Math.round((CORRECT/TOTAL_Q)*100);localStorage.setItem('snrCompleted',parseInt(localStorage.getItem('snrCompleted')||'0')+1);localStorage.setItem('snrBest',Math.max(result,parseInt(localStorage.getItem('snrBest')||'0')));_snrShowSessionEnd();};
 
 // SECONDARY CURRICULUM MODULE - Queensland 2026
 function qObj(q,a,steps){return {q:q,a:String(a),steps:steps||['Apply the relevant rule or formula.','Substitute the known values.','Calculate and check the result.','✅ '+a]};}
@@ -2107,7 +2108,8 @@ function seniorGen(kind){return pick([
 ()=>{let a=rnd(1,5),x=rnd(1,6);return qObj('Differentiate f(x) = '+a+'x² + '+rnd(1,8)+'x. Find f\'(x).',(2*a)+'x + constant coefficient',['Use the power rule.','The derivative of '+a+'x² is '+(2*a)+'x.','Differentiate the linear term as its coefficient.']);}]);}
 function seniorYear(y){let subjects=['Essential Mathematics','General Mathematics','Mathematical Methods','Specialist Mathematics'];let out={};subjects.forEach((s,i)=>{let key=['essential','general','methods','specialist'][i];let colors=['#FF9F43','#45B7D1','#6C5CE7','#00B894'];out[key]=strand(s,['🧮','📊','∫','Σ'][i],colors[i],colors[i],'#F7F7FF',{unit1:topic('Units 1–2 practice','QCAA 2025 syllabus',()=>seniorGen(key)),unit2:topic('Units 3–4 practice','QCAA 2025 syllabus',()=>seniorGen(key))});});return out;}
 const SECONDARY_CURRICULA={'Year 7':lowerYear(7),'Year 8':lowerYear(8),'Year 9':lowerYear(9),'Year 10':lowerYear(10),'Year 11':seniorYear(11),'Year 12':seniorYear(12)};
-function changeSecondaryYear(year){CURRENT_YEAR=year;ACTIVE_CURRICULUM=SECONDARY_CURRICULA[year];try{localStorage.setItem('mmSecondaryYear',year);}catch(e){};let logo=$('nav-logo');if(logo)logo.textContent='🎓 MathsMaster '+year;document.title='MathsMaster '+year+' - Queensland 2026';showDashboard();}
+function changeSecondaryYear(year){CURRENT_YEAR=year;ACTIVE_CURRICULUM=SECONDARY_CURRICULA[year];try{localStorage.setItem('mmSecondaryYear',year);}catch(e){};let logo=$('nav-logo');if(logo)logo.textContent='🎓 Maths Master Snr '+year;document.title='Maths Master Snr '+year+' - Queensland 2026';showDashboard();}
 (function bootSecondary(){let sel=$('year-level-select');let saved=localStorage.getItem('mmSecondaryYear')||'Year 7';if(sel)sel.value=saved;changeSecondaryYear(saved);})();
 
-function openParentPinModal(){return;}
+showBonusNotification=function(){return;};
+openParentPinModal=function(){return;};

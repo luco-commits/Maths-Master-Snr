@@ -1,15 +1,25 @@
 {
-  "name": "MathsMaster Snr",
-  "short_name": "MathsMaster",
-  "description": "Queensland curriculum mathematics practice for Years 7 to 12.",
+  "name": "Maths Master Snr | Queensland Mathematics",
+  "short_name": "Maths Master Snr",
+  "description": "A focused Queensland mathematics study platform for Years 7 to 12.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#f8f9ff",
-  "theme_color": "#6c5ce7",
+  "background_color": "#0b1120",
+  "theme_color": "#0f172a",
   "icons": [
-    {"src":"./assets/secondary-icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"./assets/secondary-icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+    {
+      "src": "./assets/secondary-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/secondary-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }
