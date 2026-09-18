@@ -1,4 +1,4 @@
-# MathsMaster Secondary
+# MathsMaster Snr
 
 GitHub Pages ready PWA for Queensland secondary mathematics, Years 7 to 12.
 

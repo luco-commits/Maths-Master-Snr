@@ -850,3 +850,10 @@ img, svg, canvas, video {
   #year-select-wrap { padding: 5px 7px; }
   #year-level-select { max-width: 88px; font-size: 12px; padding-left: 6px; }
 }
+
+/* Senior theme */
+body{background:linear-gradient(180deg,#0f172a 0%,#111827 100%);color:#e5e7eb}
+#nav{background:#111827;border-bottom:1px solid #334155}
+.strand-card,.topic-row,.q-card,.score-box,#workspace,.tt-selector-wrap,.tt-setting-box{background:#1e293b;color:#e5e7eb;border-color:#334155}
+.card-sub,.page-subtitle,.topic-row-code,.score-lbl{color:#94a3b8}
+.page-title,.card-title,.q-text{color:#f8fafc}

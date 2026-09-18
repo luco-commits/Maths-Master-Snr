@@ -548,14 +548,14 @@ function showDashboard(){
         <div><div class="how-item-title">🧩 Show Working</div><div class="how-item-desc">Reveal step-by-step guidance if you get stuck</div></div>
       </div>
     </div>
-    <button class="parent-btn" onclick="openParentPinModal()">
+    <div style='display:none'>
       <span class="parent-btn-icon">&#128274;</span>
       <div class="parent-btn-text">
         <div class="parent-btn-title">Parent Settings</div>
         <div class="parent-btn-sub">Bonus minutes, PIN protection &amp; reward configuration</div>
       </div>
       <span style="font-size:20px;color:rgba(255,255,255,.5)">&#8250;</span>
-    </button>`);
+    </div>`);
 }
 
 // ── STRAND PICKER ─────────────────────────────────────────
@@ -2109,3 +2109,5 @@ function seniorYear(y){let subjects=['Essential Mathematics','General Mathematic
 const SECONDARY_CURRICULA={'Year 7':lowerYear(7),'Year 8':lowerYear(8),'Year 9':lowerYear(9),'Year 10':lowerYear(10),'Year 11':seniorYear(11),'Year 12':seniorYear(12)};
 function changeSecondaryYear(year){CURRENT_YEAR=year;ACTIVE_CURRICULUM=SECONDARY_CURRICULA[year];try{localStorage.setItem('mmSecondaryYear',year);}catch(e){};let logo=$('nav-logo');if(logo)logo.textContent='🎓 MathsMaster '+year;document.title='MathsMaster '+year+' - Queensland 2026';showDashboard();}
 (function bootSecondary(){let sel=$('year-level-select');let saved=localStorage.getItem('mmSecondaryYear')||'Year 7';if(sel)sel.value=saved;changeSecondaryYear(saved);})();
+
+function openParentPinModal(){return;}
