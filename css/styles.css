@@ -879,3 +879,46 @@ body{background-image:radial-gradient(circle at 10% 0%,rgba(56,189,248,.11),tran
 .parent-btn,.bonus-banner{display:none!important}
 @media(max-width:900px){.command-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.strand-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){#hero{padding-top:35px}.command-top{align-items:flex-start;flex-direction:column}.mode-switch{width:100%}.mode-option{flex:1}.command-grid{grid-template-columns:1fr}.strand-grid{grid-template-columns:1fr}.command-centre{padding:16px}.q-card,#workspace{border-radius:13px}}
+
+/* 2027 accessibility and responsive layout */
+.working-box { color: #1e293b; }
+.working-box .step-item { background: #fff; color: #1e293b; font-weight: 600; overflow-wrap: anywhere; }
+.working-box .step-num, .working-box .working-label { color: #1e293b !important; }
+.working-box .step-reveal-btn { background: #334155 !important; color: #fff; min-height: 44px; max-width: 100%; }
+.working-box .steps-done { background: #166534; color: #fff; }
+#app { max-width: 1280px; padding-inline: clamp(12px, 3vw, 32px); }
+.command-top > *, .command-card > *, .topic-row > *, .nav-crumb-label { min-width: 0; }
+.command-card, .mode-option, .topic-start-btn, .ws-tab, .btn, .check-btn, .back-btn { min-height: 44px; }
+.command-icon { flex-shrink: 0; }
+.command-card strong, .command-card small, .card-title, .card-sub { overflow-wrap: anywhere; }
+#workspace, #working-area, .step-list, .formula-card { min-width: 0; max-width: 100%; }
+#type-answer, #scratch-area { max-width: 100%; font-size: max(16px, 1em); }
+.modal-card { max-height: 90dvh; overflow-y: auto; }
+button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid #38bdf8; outline-offset: 3px; }
+@media (min-width: 901px) {
+  .strand-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .command-grid { grid-template-columns: repeat(2,minmax(0,1fr)) repeat(2,minmax(0,.55fr)); }
+}
+@media (min-width: 601px) and (max-width: 900px) {
+  .strand-grid, .command-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+@media (max-width: 600px) {
+  #nav { gap: 6px; padding-inline: 10px; }
+  #nav-logo { font-size: clamp(12px, 3.7vw, 16px); }
+  #year-level-select { min-height: 44px; max-width: 105px; font-size: 16px; }
+  #year-select-wrap { padding: 3px 5px; }
+  #hero h1 { font-size: clamp(28px, 8vw, 40px); letter-spacing: -1px; }
+  .strand-grid, .command-grid, .how-grid { grid-template-columns: minmax(0,1fr); }
+  .command-top, .mode-switch { min-width: 0; }
+  .mode-option { padding-inline: 8px; }
+  .working-box { padding: 14px; }
+  .working-box .step-item { padding: 12px; font-size: 16px; }
+  .working-box .step-reveal-btn { width: 100%; }
+  .sym-btn, .tool-btn { min-height: 44px; }
+  .btn-row { flex-wrap: wrap; }
+  #ws-toolbar { overflow-x: auto; }
+}
+@media (max-height: 480px) and (orientation: landscape) {
+  #nav { position: relative; }
+  #hero { padding-top: 20px; }
+}
