@@ -2041,7 +2041,7 @@ function showFormulaReference(){
 const _snrShowSessionEnd=showSessionEnd;
 showSessionEnd=function(){const result=Math.round((CORRECT/TOTAL_Q)*100);localStorage.setItem('snrCompleted',parseInt(localStorage.getItem('snrCompleted')||'0')+1);localStorage.setItem('snrBest',Math.max(result,parseInt(localStorage.getItem('snrBest')||'0')));_snrShowSessionEnd();};
 
-// SECONDARY CURRICULUM MODULE - Queensland 2026
+// SECONDARY CURRICULUM MODULE - Queensland 2027
 function qObj(q,a,steps){return {q:q,a:String(a),steps:steps||['Apply the relevant rule or formula.','Substitute the known values.','Calculate and check the result.','✅ '+a]};}
 function pick(a){return a[rnd(0,a.length-1)]();}
 function g7Number(){return pick([
@@ -2107,7 +2107,7 @@ function seniorGen(kind){return pick([
 ()=>{let a=rnd(1,5),x=rnd(1,6);return qObj('Differentiate f(x) = '+a+'x² + '+rnd(1,8)+'x. Find f\'(x).',(2*a)+'x + constant coefficient',['Use the power rule.','The derivative of '+a+'x² is '+(2*a)+'x.','Differentiate the linear term as its coefficient.']);}]);}
 function seniorYear(y){let subjects=['Essential Mathematics','General Mathematics','Mathematical Methods','Specialist Mathematics'];let out={};subjects.forEach((s,i)=>{let key=['essential','general','methods','specialist'][i];let colors=['#FF9F43','#45B7D1','#6C5CE7','#00B894'];out[key]=strand(s,['🧮','📊','∫','Σ'][i],colors[i],colors[i],'#F7F7FF',{unit1:topic('Units 1–2 practice','QCAA 2025 syllabus',()=>seniorGen(key)),unit2:topic('Units 3–4 practice','QCAA 2025 syllabus',()=>seniorGen(key))});});return out;}
 const SECONDARY_CURRICULA={'Year 7':lowerYear(7),'Year 8':lowerYear(8),'Year 9':lowerYear(9),'Year 10':lowerYear(10),'Year 11':seniorYear(11),'Year 12':seniorYear(12)};
-function changeSecondaryYear(year){if(!SECONDARY_CURRICULA[year]) year='Year 7';CURRENT_YEAR=year;ACTIVE_CURRICULUM=SECONDARY_CURRICULA[year];try{localStorage.setItem('mmSecondaryYear',year);}catch(e){};let logo=$('nav-logo');if(logo)logo.textContent='🎓 Maths Master Snr '+year;document.title='Maths Master Snr '+year+' - Queensland 2026';showDashboard();}
+function changeSecondaryYear(year){if(!SECONDARY_CURRICULA[year]) year='Year 7';CURRENT_YEAR=year;ACTIVE_CURRICULUM=SECONDARY_CURRICULA[year];try{localStorage.setItem('mmSecondaryYear',year);}catch(e){};let logo=$('nav-logo');if(logo)logo.textContent='🎓 Maths Master Snr '+year;document.title='Maths Master Snr '+year+' - Queensland 2027';showDashboard();}
 (function bootSecondary(){let sel=$('year-level-select');let saved=localStorage.getItem('mmSecondaryYear')||'Year 7';if(!SECONDARY_CURRICULA[saved]) saved='Year 7';if(sel)sel.value=saved;changeSecondaryYear(saved);})();
 
 showBonusNotification=function(){return;};
