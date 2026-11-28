@@ -2100,12 +2100,59 @@ function lowerYear(y){let ys=String(y);let na=y===7?g7Number:y===8?g8Number:y===
  space:strand('Space','📐','#A29BFE','#5A4FCF','#F5F3FF',{core:topic('Spatial reasoning and transformations','AC9M'+ys+'SP',mea)}),
  statistics:strand('Statistics','📊','#FD79A8','#C0145A','#FFF0F6',{core:topic('Data, sampling and statistical investigations','AC9M'+ys+'ST',()=>gStats(y))}),
  probability:strand('Probability','🎲','#FDCB6E','#B8860B','#FFFBF0',{core:topic('Chance, compound events and probability','AC9M'+ys+'P',()=>gProb(y))})};}
-function seniorGen(kind){return pick([
-()=>{let p=rnd(1000,9000),r=rnd(2,8)/100,t=rnd(2,6);return qObj('Compound interest: P = $'+p+', r = '+(r*100)+'% p.a., n = '+t+' years. Find A to the nearest cent.',(p*Math.pow(1+r,t)).toFixed(2),['Use A = P(1 + r)ⁿ.','Substitute the values.','✅ $'+(p*Math.pow(1+r,t)).toFixed(2)]);},
-()=>{let m=rnd(2,7),c=rnd(-8,8),x=rnd(2,10);return qObj('For f(x) = '+m+'x '+(c>=0?'+ ':'− ')+Math.abs(c)+', find f('+x+').',m*x+c,['Substitute x = '+x+'.','✅ '+(m*x+c)]);},
-()=>{let n=rnd(5,10),p=rnd(1,8)/10;return qObj('For X ~ Bin('+n+', '+p.toFixed(1)+'), find the expected value E(X).',(n*p).toFixed(1),['For a binomial variable, E(X) = np.','✅ '+(n*p).toFixed(1)]);},
-()=>{let a=rnd(1,5),x=rnd(1,6);return qObj('Differentiate f(x) = '+a+'x² + '+rnd(1,8)+'x. Find f\'(x).',(2*a)+'x + constant coefficient',['Use the power rule.','The derivative of '+a+'x² is '+(2*a)+'x.','Differentiate the linear term as its coefficient.']);}]);}
-function seniorYear(y){let subjects=['Essential Mathematics','General Mathematics','Mathematical Methods','Specialist Mathematics'];let out={};subjects.forEach((s,i)=>{let key=['essential','general','methods','specialist'][i];let colors=['#FF9F43','#45B7D1','#6C5CE7','#00B894'];out[key]=strand(s,['🧮','📊','∫','Σ'][i],colors[i],colors[i],'#F7F7FF',{unit1:topic('Units 1–2 practice','QCAA 2025 syllabus',()=>seniorGen(key)),unit2:topic('Units 3–4 practice','QCAA 2025 syllabus',()=>seniorGen(key))});});return out;}
+// V4 starter banks: selected unit skills, not exhaustive syllabus coverage.
+function seniorBank(key,u){
+ const banks={
+ essential:[
+ ()=>{let h=rnd(4,12),r=rnd(20,35);return qObj('A worker earns const SECONDARY_CURRICULA={'Year 7':lowerYear(7),'Year 8':lowerYear(8),'Year 9':lowerYear(9),'Year 10':lowerYear(10),'Year 11':seniorYear(11),'Year 12':seniorYear(12)};
+function changeSecondaryYear(year){if(!SECONDARY_CURRICULA[year]) year='Year 7';CURRENT_YEAR=year;ACTIVE_CURRICULUM=SECONDARY_CURRICULA[year];try{localStorage.setItem('mmSecondaryYear',year);}catch(e){};let logo=$('nav-logo');if(logo)logo.textContent='🎓 Maths Master Snr '+year;document.title='Maths Master Snr '+year+' - Queensland 2027';showDashboard();}
+(function bootSecondary(){let sel=$('year-level-select');let saved=localStorage.getItem('mmSecondaryYear')||'Year 7';if(!SECONDARY_CURRICULA[saved]) saved='Year 7';if(sel)sel.value=saved;changeSecondaryYear(saved);})();
+
+showBonusNotification=function(){return;};
+openParentPinModal=function(){return;};
++r+' per hour for '+h+' hours. Find gross pay in dollars.',h*r,['Gross pay = hours × hourly rate.',h+' × '+r+' = '+h*r]);},
+ ()=>{let d=rnd(60,240),t=rnd(2,4);return qObj('A trip covers '+d+' km in '+t+' hours. Find average speed in km/h to 2 decimal places.',(d/t).toFixed(2),['Speed = distance ÷ time.',d+' ÷ '+t+' = '+(d/t).toFixed(2)]);},
+ ()=>{let a=rnd(2,12),b=rnd(20,100);return qObj('On a plan with scale 1:'+b+', a line measures '+a+' cm. Find actual length in cm.',a*b,['Multiply plan length by scale factor.',a+' × '+b+' = '+a*b]);},
+ ()=>{let p=rnd(10,90)*10,r=rnd(1,5)*5;return qObj('An item costs const SECONDARY_CURRICULA={'Year 7':lowerYear(7),'Year 8':lowerYear(8),'Year 9':lowerYear(9),'Year 10':lowerYear(10),'Year 11':seniorYear(11),'Year 12':seniorYear(12)};
+function changeSecondaryYear(year){if(!SECONDARY_CURRICULA[year]) year='Year 7';CURRENT_YEAR=year;ACTIVE_CURRICULUM=SECONDARY_CURRICULA[year];try{localStorage.setItem('mmSecondaryYear',year);}catch(e){};let logo=$('nav-logo');if(logo)logo.textContent='🎓 Maths Master Snr '+year;document.title='Maths Master Snr '+year+' - Queensland 2027';showDashboard();}
+(function bootSecondary(){let sel=$('year-level-select');let saved=localStorage.getItem('mmSecondaryYear')||'Year 7';if(!SECONDARY_CURRICULA[saved]) saved='Year 7';if(sel)sel.value=saved;changeSecondaryYear(saved);})();
+
+showBonusNotification=function(){return;};
+openParentPinModal=function(){return;};
++p+' before a '+r+'% discount. Find the sale price in dollars.',(p*(100-r)/100).toFixed(2),['Remaining percentage = '+(100-r)+'%.',p+' × '+(100-r)+'/100 = '+(p*(100-r)/100).toFixed(2)]);}
+ ],
+ general:[
+ ()=>{let p=rnd(10,90)*100,r=rnd(2,8),t=rnd(2,5);return qObj('Find simple interest in dollars on const SECONDARY_CURRICULA={'Year 7':lowerYear(7),'Year 8':lowerYear(8),'Year 9':lowerYear(9),'Year 10':lowerYear(10),'Year 11':seniorYear(11),'Year 12':seniorYear(12)};
+function changeSecondaryYear(year){if(!SECONDARY_CURRICULA[year]) year='Year 7';CURRENT_YEAR=year;ACTIVE_CURRICULUM=SECONDARY_CURRICULA[year];try{localStorage.setItem('mmSecondaryYear',year);}catch(e){};let logo=$('nav-logo');if(logo)logo.textContent='🎓 Maths Master Snr '+year;document.title='Maths Master Snr '+year+' - Queensland 2027';showDashboard();}
+(function bootSecondary(){let sel=$('year-level-select');let saved=localStorage.getItem('mmSecondaryYear')||'Year 7';if(!SECONDARY_CURRICULA[saved]) saved='Year 7';if(sel)sel.value=saved;changeSecondaryYear(saved);})();
+
+showBonusNotification=function(){return;};
+openParentPinModal=function(){return;};
++p+' at '+r+'% p.a. for '+t+' years.',p*r*t/100,['I = Prt.',p+' × '+r+'/100 × '+t+' = '+p*r*t/100]);},
+ ()=>{let a=rnd(2,10),b=rnd(3,12),c=rnd(4,15);return qObj('Find the median of '+a+', '+b+', '+c+'.',[a,b,c].sort((x,y)=>x-y)[1],['Order the values: '+[a,b,c].sort((x,y)=>x-y).join(', '),'Select the middle value.']);},
+ ()=>{let a=rnd(2,15),d=rnd(2,9),n=rnd(5,15);return qObj('An arithmetic sequence starts at '+a+' with common difference '+d+'. Find term '+n+'.',a+(n-1)*d,['Tₙ = a + (n − 1)d.',a+' + '+(n-1)+' × '+d+' = '+(a+(n-1)*d)]);},
+ ()=>{let p=rnd(10,90)*100,r=rnd(2,8),t=rnd(2,6);return qObj('Find the accumulated value in dollars of const SECONDARY_CURRICULA={'Year 7':lowerYear(7),'Year 8':lowerYear(8),'Year 9':lowerYear(9),'Year 10':lowerYear(10),'Year 11':seniorYear(11),'Year 12':seniorYear(12)};
+function changeSecondaryYear(year){if(!SECONDARY_CURRICULA[year]) year='Year 7';CURRENT_YEAR=year;ACTIVE_CURRICULUM=SECONDARY_CURRICULA[year];try{localStorage.setItem('mmSecondaryYear',year);}catch(e){};let logo=$('nav-logo');if(logo)logo.textContent='🎓 Maths Master Snr '+year;document.title='Maths Master Snr '+year+' - Queensland 2027';showDashboard();}
+(function bootSecondary(){let sel=$('year-level-select');let saved=localStorage.getItem('mmSecondaryYear')||'Year 7';if(!SECONDARY_CURRICULA[saved]) saved='Year 7';if(sel)sel.value=saved;changeSecondaryYear(saved);})();
+
+showBonusNotification=function(){return;};
+openParentPinModal=function(){return;};
++p+' invested at '+r+'% p.a. compounded annually for '+t+' years. Round to cents.',(p*(1+r/100)**t).toFixed(2),['A = P(1 + r)ⁿ.',p+' × '+(1+r/100)+'^'+t+' = '+(p*(1+r/100)**t).toFixed(2)]);}
+ ],
+ methods:[
+ ()=>{let a=rnd(2,8),b=rnd(1,9);return qObj('For f(x) = x² − '+(a+b)+'x + '+a*b+', find the sum of its roots.',a+b,['Factorise as (x − '+a+')(x − '+b+').','Roots sum to '+a+' + '+b+' = '+(a+b)]);},
+ ()=>{let a=rnd(1,8),b=rnd(1,9),x=rnd(1,6);return qObj('Find the gradient of f(x) = '+a+'x² + '+b+'x at x = '+x+'.',2*a*x+b,['Differentiate: f′(x) = '+2*a+'x + '+b+'.','Substitute x = '+x+': '+(2*a*x+b)]);},
+ ()=>{let n=rnd(5,20),p=rnd(1,9)/10;return qObj('For X ~ Bin('+n+', '+p+'), find E(X).',(n*p).toFixed(1),['E(X) = np.',n+' × '+p+' = '+(n*p).toFixed(1)]);},
+ ()=>{let m=rnd(2,8),a=rnd(1,5),b=a+rnd(1,5);return qObj('Evaluate the definite integral of '+m+'x from '+a+' to '+b+'.',m*(b*b-a*a)/2,['Antiderivative = '+m+'/2 × x².','Evaluate upper minus lower: '+m+'/2 × ('+b*b+' − '+a*a+') = '+m*(b*b-a*a)/2]);}
+ ],
+ specialist:[
+ ()=>{let n=rnd(4,15);return qObj('How many unordered pairs can be selected from '+n+' distinct objects?',n*(n-1)/2,['Use combinations: nC2 = n(n−1)/2.',n+' × '+(n-1)+' ÷ 2 = '+n*(n-1)/2]);},
+ ()=>{let a=rnd(1,8),b=rnd(1,8);return qObj('For z = '+a+' + '+b+'i, find the squared modulus |z|².',a*a+b*b,['|z|² = real² + imaginary².',a*a+' + '+b*b+' = '+(a*a+b*b)]);},
+ ()=>{let a=rnd(1,6),b=rnd(1,6),c=rnd(1,6),d=rnd(1,6),e=rnd(1,6),f=rnd(1,6);return qObj('Find the dot product of ('+[a,b,c].join(', ')+') and ('+[d,e,f].join(', ')+').',a*d+b*e+c*f,['Multiply corresponding components and sum.',a+' × '+d+' + '+b+' × '+e+' + '+c+' × '+f+' = '+(a*d+b*e+c*f)]);},
+ ()=>{let a=rnd(2,8),x=rnd(1,5);return qObj('Given dy/dx = '+a+'x and y(0) = 0, find y('+x+').',a*x*x/2,['Integrate: y = '+a+'/2 × x² + C.','Initial condition gives C = 0.','Substitute x = '+x+': '+a*x*x/2]);}
+ ]};return banks[key][u-1]();
+}
+function seniorYear(y){let subjects=['Essential Mathematics','General Mathematics','Mathematical Methods','Specialist Mathematics'];let out={};subjects.forEach((s,i)=>{let key=['essential','general','methods','specialist'][i];let colors=['#FF9F43','#45B7D1','#6C5CE7','#00B894'];let topics={};for(let u of (y===11?[1,2]:[3,4]))topics['unit'+u]=topic('Unit '+u+' — selected skills','QCAA 2025 syllabus',()=>seniorBank(key,u));out[key]=strand(s,['🧮','📊','∫','Σ'][i],colors[i],colors[i],'#F7F7FF',topics);});return out;}
 const SECONDARY_CURRICULA={'Year 7':lowerYear(7),'Year 8':lowerYear(8),'Year 9':lowerYear(9),'Year 10':lowerYear(10),'Year 11':seniorYear(11),'Year 12':seniorYear(12)};
 function changeSecondaryYear(year){if(!SECONDARY_CURRICULA[year]) year='Year 7';CURRENT_YEAR=year;ACTIVE_CURRICULUM=SECONDARY_CURRICULA[year];try{localStorage.setItem('mmSecondaryYear',year);}catch(e){};let logo=$('nav-logo');if(logo)logo.textContent='🎓 Maths Master Snr '+year;document.title='Maths Master Snr '+year+' - Queensland 2027';showDashboard();}
 (function bootSecondary(){let sel=$('year-level-select');let saved=localStorage.getItem('mmSecondaryYear')||'Year 7';if(!SECONDARY_CURRICULA[saved]) saved='Year 7';if(sel)sel.value=saved;changeSecondaryYear(saved);})();
